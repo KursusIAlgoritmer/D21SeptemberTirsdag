@@ -1,32 +1,37 @@
+import java.util.Scanner;
+
 public class Exc1_4_10{
 
-  public static void main(){
+  public static void main(String[] args){
 
-      Scanner s     = new Scanner(System.in);
+      int[] list    = {1,2,3,4,5,6,7,8,9,10};//new int[n];
+      int findValue = 6;
 
-      int n         = s.nenextInt();
-      int[] list    = new int[n];
-
-      for(int i=0; i < list.length ; i ++){
-        list[i] = s.nextInt();
-      }
+      System.out.println("SVARET ER :" + getSmallestIndexBinarySearch(list, findValue));
 
   }
 
 
   public static int getSmallestIndexBinarySearch(int[] list, int valueTofind){
 
-    int low = 0;
-    int high = list.length;
+    int low         = 0;
+    int high        = list.length;
 
-    int guessIndex = (high - low)/2;
+    int guessIndex  = (high - low)/2;
 
     while(high > low){
-      if(list[guessIndex] == valueTofind){
-          getSmallestIndexBinarySearch(, valueTofind)
+      if(list[guessIndex] == valueTofind){ //afprøv
+        return guessIndex;
       }
-
+      if(list[guessIndex] < valueTofind){
+        low = guessIndex;
+      }
+      if(list[guessIndex] > valueTofind){
+        high = guessIndex;
+      }
     }
+
+    return -1;
 
   }
 
