@@ -2,37 +2,34 @@ import java.util.Scanner;
 
 public class Exc1_4_10{
 
-  public static void main(String[] args){
 
-      int[] list    = {1,2,3,4,5,6,7,8,9,10};//new int[n];
-      int findValue = 6;
-
-      System.out.println("SVARET ER :" + getSmallestIndexBinarySearch(list, findValue));
-
-  }
-
-
-  public static int getSmallestIndexBinarySearch(int[] list, int valueTofind){
-
-    int low         = 0;
-    int high        = list.length;
-
-    int guessIndex  = (high - low)/2;
-
-    while(high > low){
-      if(list[guessIndex] == valueTofind){ //afprøv
-        return guessIndex;
+    public static int bsearch(int[] a, int key) {
+      int lo = 0, hi = a.length - 1;
+      while (lo <= hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (key < a[mid]) {
+          hi = mid - 1;
+        } else if (key > a[mid]) {
+          lo = mid + 1;
+        } else if (mid == 0 || a[mid - 1] != key) {
+          //a[mid -1] != key ...
+          //tjekker at den til venstre ikke er "key"
+          //Altså det "mindste index"
+          //hvis den er kører vi en ny "binær søgning
+          //----
+          //mid == 0
+          //Sikrer at vi ikke kan komme længere til venstre
+          return mid;
+        } else {
+          hi = mid - 1;
+        }
       }
-      if(list[guessIndex] < valueTofind){
-        low = guessIndex;
-      }
-      if(list[guessIndex] > valueTofind){
-        high = guessIndex;
-      }
+      return -1;
     }
 
-    return -1;
-
-  }
-
+    public static void main(String[] args) {
+      int[] a = {1, 1, 1, 1, 2, 2, 2, 2, 3, 4, 4};
+      System.out.printf("index :%d\n", bsearch(a, 1)); // 0
+      System.out.printf("index :%d\n", bsearch(a, 2)); // 4
+    }
 }
