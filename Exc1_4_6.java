@@ -20,6 +20,9 @@ public class Exc1_4_6{
       }
     }
 
+//VIGTIGT:
+//Sum(2^k, k=0..m) = 2^(m+1)-1 = 2*2^m-1   da N=2^m    kører inderste loop     2*N - 1
+
     System.out.println("OPGAVE A");
 
     System.out.println("Sum:  " + sum);
